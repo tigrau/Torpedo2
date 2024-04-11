@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5ka18ewac1c0"]
+
+[ext_resource type="Script" path="res://ship.gd" id="1_ixa5h"]
+[ext_resource type="Texture2D" uid="uid://4fu1s15fc1ag" path="res://ship.png" id="2_2p7xt"]
+[ext_resource type="PackedScene" uid="uid://cmjefhan3wsud" path="res://scenes/torpedo_2.tscn" id="2_mvsjt"]
+
+[node name="Ship" type="CharacterBody2D"]
+rotation = 4.71239
+script = ExtResource("1_ixa5h")
+torpedo_node = ExtResource("2_mvsjt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_2p7xt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 136.0
+offset_top = 518.0
+offset_right = 171.0
+offset_bottom = 549.0
+text = "fire"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 210.0
+offset_top = 474.0
+offset_right = 264.0
+offset_bottom = 497.0
+text = "угол: 0"
+
+[node name="Label4" type="Label" parent="CanvasLayer"]
+offset_left = 346.0
+offset_top = 473.0
+offset_right = 400.0
+offset_bottom = 496.0
+text = "lut"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer"]
+custom_minimum_size = Vector2(600, 0)
+offset_left = 205.0
+offset_top = 500.0
+offset_right = 405.0
+offset_bottom = 516.0
+focus_mode = 0
+min_value = -180.0
+max_value = 180.0
+step = 0.1
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 211.0
+offset_top = 523.0
+offset_right = 280.0
+offset_bottom = 546.0
+text = "время: 0"
+
+[node name="HSlider2" type="HSlider" parent="CanvasLayer"]
+custom_minimum_size = Vector2(200, 0)
+offset_left = 209.0
+offset_top = 552.0
+offset_right = 409.0
+offset_bottom = 568.0
+focus_mode = 0
+max_value = 15.0
+step = 0.1
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 218.0
+offset_top = 574.0
+offset_right = 272.0
+offset_bottom = 597.0
+text = "угол: 0"
+
+[node name="Label5" type="Label" parent="CanvasLayer"]
+offset_left = 351.0
+offset_top = 574.0
+offset_right = 405.0
+offset_bottom = 597.0
+text = "fat"
+
+[node name="HSlider3" type="HSlider" parent="CanvasLayer"]
+custom_minimum_size = Vector2(600, 0)
+offset_left = 213.0
+offset_top = 600.0
+offset_right = 413.0
+offset_bottom = 616.0
+focus_mode = 0
+min_value = -180.0
+max_value = 180.0
+step = 0.01
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="drag_ended" from="CanvasLayer/HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="value_changed" from="CanvasLayer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="drag_ended" from="CanvasLayer/HSlider2" to="." method="_on_h_slider_2_drag_ended"]
+[connection signal="value_changed" from="CanvasLayer/HSlider2" to="." method="_on_h_slider_2_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/HSlider3" to="." method="_on_h_slider_3_value_changed"]

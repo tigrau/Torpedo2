@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmjefhan3wsud"]
+
+[ext_resource type="Script" path="res://scenes/torpedo_2.gd" id="1_bdt80"]
+[ext_resource type="Texture2D" uid="uid://n72cicl3f5u6" path="res://torpedo.png" id="1_rxw3x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6avl"]
+radius = 62.0
+height = 548.0
+
+[node name="torpedo2" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_bdt80")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_rxw3x")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_v6avl")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
